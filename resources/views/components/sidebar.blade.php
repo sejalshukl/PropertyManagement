@@ -39,19 +39,29 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard') }}" >
-                        <i class="ri-dashboard-2-line"></i>
-                        <span data-key="t-dashboards">Information</span>
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard') }}" >
-                        <i class="ri-dashboard-2-line"></i>
-                        <span data-key="t-dashboards">My Application</span>
-                    </a>
-                </li>
+                @canany(['users.view', 'roles.view'])
+                    <li class="nav-item">
+                        <a class="nav-link menu-link {{ request()->routeIs('users.*') || request()->routeIs('roles.*') ? 'active' : 'collapsed' }}" href="#sidebarLayouts1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
+                            <i class="ri-layout-3-line"></i>
+                            <span data-key="t-layouts">User Management</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ request()->routeIs('users.*') || request()->routeIs('roles.*') ? 'show' : '' }} " id="sidebarLayouts1">
+                            <ul class="nav nav-sm flex-column">
+                                @can('users.view')
+                                    <li class="nav-item">
+                                        <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" data-key="t-horizontal">Users</a>
+                                    </li>
+                                @endcan
+                                @can('roles.view')
+                                    <li class="nav-item">
+                                        <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}" data-key="t-horizontal">Roles</a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
 
 
                 <li class="nav-item">
