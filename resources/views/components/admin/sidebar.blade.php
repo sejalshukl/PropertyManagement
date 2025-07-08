@@ -33,7 +33,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard') }}" >
+                    <a class="nav-link menu-link" href="{{ route('dashboard') }}">
                         <i class="ri-dashboard-2-line"></i>
                         <span data-key="t-dashboards">Dashboard</span>
                     </a>
@@ -53,6 +53,14 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link  {{ request()->routeIs('show-change-password') ? 'active' : 'collapsed' }}" href="{{ route('show-change-password') }}">
+                        <i class="ri-lock-password-line"></i>
+                        <span data-key="t-dashboards">Change Password</span>
+                    </a>
                 </li>
 
             </ul>

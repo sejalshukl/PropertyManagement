@@ -1,5 +1,6 @@
-<x-admin.admin-layout>
+<x-admin.layout>
     <x-slot name="title">Change Password</x-slot>
+    <x-slot name="heading">Change Password</x-slot>
 
     <div class="page-body">
         <div class="container-fluid">
@@ -79,7 +80,7 @@
         <!-- Container-fluid Ends-->
     </div>
 
-</x-admin.admin-layout>
+</x-admin.layout>
 
 
 <script>
