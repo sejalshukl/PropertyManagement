@@ -4,10 +4,10 @@
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
     <div class="row">
-        <div class="col-xxl-5">
+        <div class="col-12">
             <div class="d-flex flex-column h-100">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -41,7 +41,7 @@
                     </div>
                     <!-- end col-->
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -75,10 +75,8 @@
                         <!-- end card-->
                     </div>
                     <!-- end col-->
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -115,7 +113,7 @@
                     </div>
                     <!-- end col-->
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -148,8 +146,8 @@
                         </div>
                         <!-- end card-->
                     </div>
-                    <!-- end col-->
                 </div>
+
             </div>
         </div>
 
