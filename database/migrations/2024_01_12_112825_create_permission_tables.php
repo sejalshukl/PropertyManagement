@@ -32,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
-            $table->string('group');
+            // $table->string('group');
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames) {

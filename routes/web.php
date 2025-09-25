@@ -43,7 +43,13 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     Route::get('home', fn () => redirect()->route('dashboard'))->name('home');
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
+    //Masters
 
+    Route::resource('court',App\Http\Controllers\Admin\Masters\CourtController::class);
+    Route::resource('lawyer',App\Http\Controllers\Admin\Masters\LawyerController::class);
+
+    //forms
+    Route::resource('court-cases-count',App\Http\Controllers\Admin\CourtCasesCountController::class);
 
     // Users Roles n Permissions
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);

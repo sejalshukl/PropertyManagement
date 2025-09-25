@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Masters;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWardRequest extends FormRequest
+class StoreCourtCasesCountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class StoreWardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:wards,name',
-            'initial' => 'required',
-        ];
+            'court_id'=>'required',
+            'lawyer_id'=>'required',
+            'count'=>'required'
+       ];
     }
 }

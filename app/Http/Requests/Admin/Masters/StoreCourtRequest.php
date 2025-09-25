@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Masters;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateWardRequest extends FormRequest
+class StoreCourtRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class UpdateWardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'initial' => 'required',
+            'court_name_in_marathi'=>'required',
+            'court_name_in_english'=>'required'
         ];
     }
 }
