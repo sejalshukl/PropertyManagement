@@ -19,13 +19,10 @@ class CourtCasesCountController extends Controller
      */
     public function index()
     {
-        $courtCasesCount = CourseCaseCount::latest()->get();
+        $courtCasesCount = CourseCaseCount::with(['court', 'lawyer'])->get();
         $court = Court::latest()->get();
         $lawyer = Lawyerss::latest()->get();
-        return view('admin.courtcasescount')->with(['
-        courtCasesCount'=> $courtCasesCount,
-        'court'=>$court,
-        'lawyer'=>$lawyer]);
+        return view('admin.courtcasescount')->with(['courtCasesCount'=> $courtCasesCount,'court'=>$court,'lawyer'=>$lawyer]);
     }
 
     /**
@@ -70,10 +67,20 @@ class CourtCasesCountController extends Controller
      */
     public function edit(CourseCaseCount $courtCasesCount)
     {
+        $courtCasesCountss = DB::table('lawyersses')->where('court_id', $courtCasesCount->court_id)->whereNull('deleted_at')->get();
+        $courtCasesCountHTML = "";
+        foreach($courtCasesCountss as $courtCases){
+            $isSelected = ($courtCases->lawyer_name_in_english == $courtCases->lawyer_name_in_english) ? 'selected' : '';
+            $courtCasesCountHTML .= "<option ".$isSelected." value='".$courtCases->lawyer_name_in_english."'>".$courtCases->lawyer_name_in_english."</option>";
+        }
+
+        // $courseCaseCount = CourseCaseCount::find($courtCasesCount);
          if ($courtCasesCount) {
             return [
                 'result' => 1,
                 'courtCasesCount' => $courtCasesCount,
+                'courtCasesCountss'=> $courtCasesCountss,
+                'courtCasesCountHTML'=> $courtCasesCountHTML
             ];
         }
 
@@ -118,6 +125,16 @@ class CourtCasesCountController extends Controller
             return response()->json([
                 'error' => 'Error deleting Court Cases Count: ' . $e->getMessage()
             ], 500);
+        }
+    }
+
+        public function getLawyers(Request $request){
+        if($request->ajax()){
+            $data = DB::table('lawyersses')->where('court_id', $request->id)->whereNull('deleted_at')->get();
+
+            return response()->json([
+                'data' => $data
+            ]);
         }
     }
 }

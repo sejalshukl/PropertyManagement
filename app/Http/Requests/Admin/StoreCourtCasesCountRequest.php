@@ -24,7 +24,7 @@ class StoreCourtCasesCountRequest extends FormRequest
         return [
             'court_id'=>'required',
             'lawyer_id'=>'required',
-            'count'=>'required'
+            'pending_cases_count'=>'required'
        ];
     }
 }

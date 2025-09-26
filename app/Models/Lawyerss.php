@@ -15,4 +15,8 @@ class Lawyerss extends Model
         'lawyer_name_in_english',
         'lawyer_name_in_marathi'
     ];
+
+    public function courtcasescount(){
+        return $this->hasMany(CourseCaseCount::class,'lawyer_id');
+    }
 }

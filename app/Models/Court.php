@@ -14,4 +14,8 @@ class Court extends Model
       'court_name_in_english',
       'court_name_in_marathi'
     ];
+
+    public function courtcasescount(){
+        return $this->hasMany(CourseCaseCount::class,'court_id');
+    }
 }

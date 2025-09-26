@@ -15,4 +15,12 @@ class CourseCaseCount extends Model
         'lawyer_id',
         'pending_cases_count'
     ];
+
+    public function lawyer(){
+        return $this->belongsTo(Lawyerss::class,'lawyer_id','id');
+    }
+
+    public function court(){
+        return $this->belongsTo(Court::class,'court_id','id');
+    }
 }

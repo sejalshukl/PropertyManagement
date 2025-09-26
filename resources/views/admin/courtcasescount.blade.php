@@ -15,8 +15,8 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="court_id">Court Name<span class="text-danger">*</span></label>
                                     <select name="court_id" id="court_id" class="form-control">
+                                        <option>--Select Court Name--</option>
                                         @foreach ($court as $courts)
-                                             <option>--Select Court Name--</option>
                                             <option value="{{ $courts->id }}">{{ $courts->court_name_in_english }}</option>
                                         @endforeach
                                     </select>
@@ -25,10 +25,10 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="lawyer_id">Lawyer Name<span class="text-danger">*</span></label>
                                     <select name="lawyer_id" id="lawyer_id" class="form-control">
-                                        @foreach ($lawyer as $lawyers)
-                                             <option>--Select Lawyer Name--</option>
+                                        <option>--Select Lawyer Name--</option>
+                                        {{-- @foreach ($lawyer as $lawyers)
                                             <option value="{{ $lawyers->id }}">{{ $lawyers->lawyer_name_in_english }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                     <span class="text-danger error-text lawyer_id_err"></span>
                                 </div>
@@ -57,15 +57,15 @@
                     @csrf
                     <section class="card">
                         <header class="card-header">
-                            <h4 class="card-title">Edit Lawyers</h4>
+                            <h4 class="card-title">Edit Court Cases Counts</h4>
                         </header>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                                  <div class="col-md-4">
                                     <label class="col-form-label" for="court_id">Court Name<span class="text-danger">*</span></label>
-                                    <select name="court_id" id="court_id" class="form-control">
+                                    <select name="court_id" id="court_ids" class="form-control">
+                                         <option>--Select Court Name--</option>
                                         @foreach ($court as $courts)
-                                             <option>--Select Court Name--</option>
                                             <option value="{{ $courts->id }}">{{ $courts->court_name_in_english }}</option>
                                         @endforeach
                                     </select>
@@ -73,11 +73,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="lawyer_id">Lawyer Name<span class="text-danger">*</span></label>
-                                    <select name="lawyer_id" id="lawyer_id" class="form-control">
-                                        @foreach ($lawyer as $lawyers)
-                                             <option>--Select Lawyer Name--</option>
+                                    <select name="lawyer_id" id="lawyer_ids" class="form-control">
+                                        <option>--Select Lawyer Name--</option>
+                                        {{-- @foreach ($lawyer as $lawyers)
                                             <option value="{{ $lawyers->id }}">{{ $lawyers->lawyer_name_in_english }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                     <span class="text-danger error-text lawyer_id_err"></span>
                                 </div>
@@ -126,8 +126,8 @@
                                     @foreach ($courtCasesCount  as $courtCases)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$courtCases->court_id}}</td>
-                                            <td>{{$courtCases->lawyer_id}}</td>
+                                            <td>{{$courtCases->court->court_name_in_english  ?? 'NA' }}</td>
+                                            <td>{{$courtCases->lawyer->lawyer_name_in_english  ?? 'NA' }}</td>
                                             <td>{{$courtCases->pending_cases_count}}</td>
                                             <td>
                                                 <button class="edit-element btn btn-secondary px-2 py-1" title="Edit sub" data-id="{{ $courtCases->id }}" ><i data-feather="edit"></i></button>
@@ -202,7 +202,7 @@
                 {
                      $("#editForm input[name='edit_model_id']").val(data.courtCasesCount.id);
                      $("#editForm select[name='court_id']").val(data.courtCasesCount.court_id);
-                     $("#editForm input[name='lawyer_id']").val(data.courtCasesCount.lawyer_id );
+                     $("#editForm select[name='lawyer_id']").val(data.courtCasesCountHTML);
                      $("#editForm input[name='pending_cases_count']").val(data.courtCasesCount.pending_cases_count);
                 }
                 else
@@ -308,3 +308,72 @@
         });
     });
 </script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+<script>
+    $(document).ready(function(){
+    $('#court_id').on('change', function(){
+        let SelectedValue = $(this).val();
+        var url = "{{ route('court-cases-count.get-lawyers', ':model_id') }}";
+        $.ajax({
+            url: url.replace(':model_id', SelectedValue),
+            type: 'GET',
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                let html = ``;
+                $.each(data.data, function(key, val){
+                    html += `<option value="${val.id}">${val.lawyer_name_in_english}</option>`;
+                });
+                $('#lawyer_id').html(html)
+
+            },
+            statusCode: {
+                422: function(responseObject, textStatus, jqXHR) {
+                    $("#addSubmit").prop('disabled', false);
+                    resetErrors();
+                    printErrMsg(responseObject.responseJSON.errors);
+                },
+                500: function(responseObject, textStatus, errorThrown) {
+                    $("#addSubmit").prop('disabled', false);
+                    swal("Error occured!", "Something went wrong please try again", "error");
+                }
+            }
+        });
+        });
+    });
+    </script>
+   <script>
+    $(document).ready(function(){
+    $('#court_ids').on('change', function(){
+        let SelectedValue = $(this).val();
+        var url = "{{ route('court-cases-count.get-lawyers', ':model_id') }}";
+        $.ajax({
+            url: url.replace(':model_id', SelectedValue),
+            type: 'GET',
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                let html = ``;
+                $.each(data.data, function(key, val){
+                    html += `<option value="${val.id}">${val.lawyer_name_in_english}</option>`;
+                });
+                $('#lawyer_ids').html(html)
+
+            },
+            statusCode: {
+                422: function(responseObject, textStatus, jqXHR) {
+                    $("#addSubmit").prop('disabled', false);
+                    resetErrors();
+                    printErrMsg(responseObject.responseJSON.errors);
+                },
+                500: function(responseObject, textStatus, errorThrown) {
+                    $("#addSubmit").prop('disabled', false);
+                    swal("Error occured!", "Something went wrong please try again", "error");
+                }
+            }
+        });
+        });
+    });
+    </script>

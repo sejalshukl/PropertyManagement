@@ -15,8 +15,8 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="court_id">Lawyers<span class="text-danger">*</span></label>
                                     <select name="court_id" id="court_id" class="form-control">
+                                        <option>--Select Lawyers--</option>
                                         @foreach ($court as $courts)
-                                             <option>--Select Lawyers--</option>
                                             <option value="{{ $courts->id }}">{{ $courts->court_name_in_english }}</option>
                                         @endforeach
                                     </select>
@@ -59,6 +59,7 @@
                                  <div class="col-md-4">
                                     <label class="col-form-label" for="court_id">Lawyers<span class="text-danger">*</span></label>
                                     <select name="court_id" id="court_id" class="form-control">
+                                        <option>--Select Lawyers--</option>
                                         @foreach ($court as $courts)
                                             <option value="{{ $courts->id }}">{{ $courts->court_name_in_english }}</option>
                                         @endforeach

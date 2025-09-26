@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-
+// use App\Http\Controllers\Admin\CourtCasesCountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +50,8 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     //forms
     Route::resource('court-cases-count',App\Http\Controllers\Admin\CourtCasesCountController::class);
+    // Route::get('/get-lawyers/{court_id}',[App\Http\Controllers\Admin\CourtCasesCountController::class,'getLawyers']);
+    Route::get('court-cases-count/getLawyers/{id}', [App\Http\Controllers\Admin\CourtCasesCountController::class,'getLawyers'])->name('court-cases-count.get-lawyers');
 
     // Users Roles n Permissions
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);

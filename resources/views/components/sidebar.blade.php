@@ -62,25 +62,32 @@
                         </div>
                     </li>
                 @endcanany
-                 <li class="nav-item">
-                      <a class="nav-link menu-link {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'active' : 'collapsed' }}" href="#sidebarLayouts12" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
+                   <li class="nav-item">
+                        <a class="nav-link menu-link {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'active' : 'collapsed' }}" href="#sidebarLayouts12"data-bs-toggle="collapse" role="button"
+                        aria-expanded="{{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'true' : 'false' }}" aria-controls="sidebarLayouts12">
                             <i class="ri-layout-3-line"></i>
                             <span data-key="t-layouts">Masters</span>
                         </a>
-                        <div class="collapse menu-dropdown {{ request()->routeIs('court.*')  ? 'show' : '' }} " id="sidebarLayouts12">
-                            <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('court.index') }}" class="nav-link {{ request()->routeIs('court.*') ? 'active' : '' }}" data-key="t-horizontal">Court</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('lawyer.index') }}" class="nav-link {{ request()->routeIs('lawyer.*') ? 'active' : '' }}" data-key="t-horizontal">Lawyer</a>
-                                    </li>
-                            </ul>
-                        </div>
+
+                  <div class="collapse menu-dropdown {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'show' : '' }}" id="sidebarLayouts12">
+                   <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="{{ route('court.index') }}"
+                        class="nav-link {{ request()->routeIs('court.*') ? 'active' : '' }}"
+                        data-key="t-horizontal">Court</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('lawyer.index') }}"
+                        class="nav-link {{ request()->routeIs('lawyer.*') ? 'active' : '' }}"
+                        data-key="t-horizontal">Lawyer</a>
+                    </li>
+                        </ul>
+                    </div>
+                </li>
+
+                    <li class="nav-item">
                       <a class="nav-link menu-link {{ request()->routeIs('court-cases-count.*')  ? 'active' : 'collapsed' }}" href="#sidebarLayouts123" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
-                            <i class="ri-layout-3-line"></i>
+                            <i class="ri-bank-line"></i>
                             <span data-key="t-layouts">Cases</span>
                         </a>
                         <div class="collapse menu-dropdown {{ request()->routeIs('court-cases-count.*')  ? 'show' : '' }} " id="sidebarLayouts123">
