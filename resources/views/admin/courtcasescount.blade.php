@@ -22,6 +22,7 @@
                                     </select>
                                     <span class="text-danger error-text court_id_err"></span>
                                 </div>
+                                
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="lawyer_id">Lawyer Name<span class="text-danger">*</span></label>
                                     <select name="lawyer_id" id="lawyer_id" class="form-control">
