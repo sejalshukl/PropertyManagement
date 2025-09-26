@@ -77,6 +77,23 @@ class LawyerController extends Controller
         return ['result' => 0];
     }
 
+   public function changeStatus(Request $request, $id)
+   {
+    try {
+        $lawyer = Lawyerss::findOrFail($id);
+        $lawyer->status = $request->status; // 1 or 0
+        $lawyer->save();
+
+        return response()->json(['success' => 'Lawyer status updated successfully!']);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Error updating status: ' . $e->getMessage()
+        ], 500);
+    }
+}
+
+
+
     /**
      * Update the specified resource in storage.
      */

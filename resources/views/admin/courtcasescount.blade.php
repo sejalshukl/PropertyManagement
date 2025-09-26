@@ -202,7 +202,7 @@
                 {
                      $("#editForm input[name='edit_model_id']").val(data.courtCasesCount.id);
                      $("#editForm select[name='court_id']").val(data.courtCasesCount.court_id);
-                     $("#editForm select[name='lawyer_id']").val(data.courtCasesCountHTML);
+                     $("#editForm select[name='lawyer_id']").html(data.courtCasesCountHTML);
                      $("#editForm input[name='pending_cases_count']").val(data.courtCasesCount.pending_cases_count);
                 }
                 else

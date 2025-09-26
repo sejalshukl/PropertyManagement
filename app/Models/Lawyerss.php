@@ -13,10 +13,15 @@ class Lawyerss extends Model
     protected $fillable = [
         'court_id',
         'lawyer_name_in_english',
-        'lawyer_name_in_marathi'
+        'lawyer_name_in_marathi',
+        'status'
     ];
 
     public function courtcasescount(){
         return $this->hasMany(CourseCaseCount::class,'lawyer_id');
+    }
+
+      public function getStatusLabelAttribute(){
+        return $this->status ? 'Active' : 'InActive';
     }
 }

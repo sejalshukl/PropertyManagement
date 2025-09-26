@@ -23,4 +23,5 @@ class CourseCaseCount extends Model
     public function court(){
         return $this->belongsTo(Court::class,'court_id','id');
     }
+
 }

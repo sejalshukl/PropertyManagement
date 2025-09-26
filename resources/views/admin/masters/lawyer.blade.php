@@ -108,6 +108,7 @@
                                         <th>Sr.No</th>
                                         <th>Lawyer Name In English</th>
                                         <th>Lawyer Name In Marathi</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -117,6 +118,12 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$lawyers->lawyer_name_in_english}}</td>
                                             <td>{{$lawyers->lawyer_name_in_marathi}}</td>
+                                            <td>
+                                            <select class="form-select change-status" data-id="{{ $lawyers->id }}">
+                                                <option value="1" {{ $lawyers->status == 1 ? 'selected' : '' }}>Active</option>
+                                                <option value="0" {{ $lawyers->status == 0 ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                           </td>
                                             <td>
                                                 <button class="edit-element btn btn-secondary px-2 py-1" title="Edit sub" data-id="{{ $lawyers->id }}" ><i data-feather="edit"></i></button>
                                                 <button class="btn btn-danger rem-element px-2 py-1" title="Delete sub" data-id="{{ $lawyers->id }}"><i data-feather="trash-2"></i> </button>
@@ -295,4 +302,41 @@
             }
         });
     });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+$(document).ready(function() {
+    $(document).on('change', '.change-status', function () {
+        let lawyerId = $(this).data('id');
+        let status = $(this).val();
+
+        // Generate URL dynamically with route placeholder
+        let url = "{{ route('lawyer.change-status', ':id') }}".replace(':id', lawyerId);
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                status: status,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                // Show message on the frontend using SweetAlert
+                if(response.success){
+                    Swal.fire({
+                        title: "Success!",
+                        text: response.success,  // <-- This message comes from controller
+                        icon: "success",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            },
+            error: function(xhr) {
+                let msg = xhr.responseJSON?.error || "Something went wrong!";
+                Swal.fire("Error", msg, "error");
+            }
+        });
+    });
+});
 </script>
