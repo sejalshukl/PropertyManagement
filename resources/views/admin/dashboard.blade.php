@@ -7,144 +7,91 @@
         <div class="col-12">
             <div class="d-flex flex-column h-100">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <p class="fw-medium text-muted mb-0">
-                                            Users
-                                        </p>
+                                        <p class="fw-medium text-muted mb-0">Total Properties</p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="28.05">0</span>k
+                                            <span class="counter-value"
+                                                data-target="{{ $totalProperties }}">{{ $totalProperties }}</span>
                                         </h2>
                                         <p class="mb-0 text-muted">
-                                            <span class="badge bg-light text-success mb-0"><i class="ri-arrow-up-line align-middle"></i>
-                                                16.24 %
+                                            <span class="badge bg-light text-primary mb-0">
+                                                <i class="ri-home-line align-middle"></i> Total
                                             </span>
-                                            vs. previous
-                                            month
+                                            Properties Listed
                                         </p>
                                     </div>
                                     <div>
                                         <div class="avatar-sm flex-shrink-0">
-                                            <span class="avatar-title bg-info-subtle rounded-circle fs-2">
-                                                <i data-feather="users" class="text-info"></i>
+                                            <span class="avatar-title bg-primary-subtle rounded-circle fs-2">
+                                                <i data-feather="home" class="text-primary"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end card body -->
                         </div>
-                        <!-- end card-->
                     </div>
-                    <!-- end col-->
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="card card-animate">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <p class="fw-medium text-muted mb-0">
-                                            Sessions
-                                        </p>
+                                        <p class="fw-medium text-muted mb-0">Available Properties</p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="97.66">0</span>k
-                                        </h2>
-                                        <p class="mb-0 text-muted">
-                                            <span class="badge bg-light text-danger mb-0">
-                                                <i class="ri-arrow-down-line align-middle"></i>
-                                                3.96 %
-                                            </span>
-                                            vs. previous
-                                            month
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-sm flex-shrink-0">
-                                            <span class="avatar-title bg-info-subtle rounded-circle fs-2">
-                                                <i data-feather="activity" class="text-info"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end card body -->
-                        </div>
-                        <!-- end card-->
-                    </div>
-                    <!-- end col-->
-
-                    <div class="col-md-3">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <p class="fw-medium text-muted mb-0">
-                                            Avg. Visit
-                                            Duration
-                                        </p>
-                                        <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="3">0</span>m
-                                            <span class="counter-value" data-target="40">0</span>sec
-                                        </h2>
-                                        <p class="mb-0 text-muted">
-                                            <span class="badge bg-light text-danger mb-0">
-                                                <i class="ri-arrow-down-line align-middle"></i>
-                                                0.24 %
-                                            </span>
-                                            vs. previous
-                                            month
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <div class="avatar-sm flex-shrink-0">
-                                            <span class="avatar-title bg-info-subtle rounded-circle fs-2">
-                                                <i data-feather="clock" class="text-info"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end card body -->
-                        </div>
-                        <!-- end card-->
-                    </div>
-                    <!-- end col-->
-
-                    <div class="col-md-3">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <p class="fw-medium text-muted mb-0">
-                                            Bounce Rate
-                                        </p>
-                                        <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="33.48">0</span>%
+                                            <span class="counter-value"
+                                                data-target="{{ $availableProperties }}">{{ $availableProperties }}</span>
                                         </h2>
                                         <p class="mb-0 text-muted">
                                             <span class="badge bg-light text-success mb-0">
-                                                <i class="ri-arrow-up-line align-middle"></i>
-                                                7.05 %
+                                                <i class="ri-check-double-line align-middle"></i> Available
                                             </span>
-                                            vs. previous
-                                            month
+                                            Ready for Sale
                                         </p>
                                     </div>
                                     <div>
                                         <div class="avatar-sm flex-shrink-0">
-                                            <span class="avatar-title bg-info-subtle rounded-circle fs-2">
-                                                <i data-feather="external-link" class="text-info"></i>
+                                            <span class="avatar-title bg-success-subtle rounded-circle fs-2">
+                                                <i data-feather="check-circle" class="text-success"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end card body -->
                         </div>
-                        <!-- end card-->
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="fw-medium text-muted mb-0">Sold Properties</p>
+                                        <h2 class="mt-4 ff-secondary fw-semibold">
+                                            <span class="counter-value"
+                                                data-target="{{ $soldProperties }}">{{ $soldProperties }}</span>
+                                        </h2>
+                                        <p class="mb-0 text-muted">
+                                            <span class="badge bg-light text-warning mb-0">
+                                                <i class="ri-shopping-cart-2-line align-middle"></i> Sold
+                                            </span>
+                                            Transactions Completed
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="avatar-sm flex-shrink-0">
+                                            <span class="avatar-title bg-warning-subtle rounded-circle fs-2">
+                                                <i data-feather="shopping-bag" class="text-warning"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
