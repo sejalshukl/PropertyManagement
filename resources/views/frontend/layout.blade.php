@@ -102,7 +102,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fas fa-building me-2"></i> VelzonEstate
+                <i class="fas fa-building me-2"></i> Property Management
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -110,7 +110,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item me-3">
-                        <a class="nav-link" href="{{ route('frontend.properties.index') }}">Browse Properties</a>
+                        <a class="nav-link" href="{{ route('frontend.properties.index') }}">Properties Manage</a>
                     </li>
                     @auth
                         <li class="nav-item">
