@@ -37,6 +37,7 @@ Route::middleware(['guest', 'PreventBackHistory', 'firewall.all'])->group(functi
 // Authenticated users
 Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(function () {
 
+    
     // Auth Routes
     Route::post('logout', [App\Http\Controllers\Registeration\AuthController::class, 'Logout'])->name('logout');
     Route::get('show-change-password', [App\Http\Controllers\Registeration\AuthController::class, 'showChangePassword'])->name('show-change-password');
