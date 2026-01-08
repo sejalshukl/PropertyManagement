@@ -4,19 +4,19 @@
         <!-- Dark Logo-->
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" />
+                {{-- <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" /> --}}
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" />
+                {{-- <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" /> --}}
             </span>
         </a>
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" />
+                {{-- <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" /> --}}
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" />
+                {{-- <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="101" width="132" />\ --}}
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -63,15 +63,15 @@
                     </li>
                 @endcanany
                    <li class="nav-item">
-                        <a class="nav-link menu-link {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'active' : 'collapsed' }}" href="#sidebarLayouts12"data-bs-toggle="collapse" role="button"
+                        {{-- <a class="nav-link menu-link {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'active' : 'collapsed' }}" href="#sidebarLayouts12"data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'true' : 'false' }}" aria-controls="sidebarLayouts12">
                             <i class="ri-layout-3-line"></i>
                             <span data-key="t-layouts">Masters</span>
-                        </a>
+                        </a> --}}
 
                   <div class="collapse menu-dropdown {{ request()->routeIs('court.*') || request()->routeIs('lawyer.*') ? 'show' : '' }}" id="sidebarLayouts12">
                    <ul class="nav nav-sm flex-column">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('court.index') }}"
                         class="nav-link {{ request()->routeIs('court.*') ? 'active' : '' }}"
                         data-key="t-horizontal">Court</a>
@@ -80,20 +80,20 @@
                         <a href="{{ route('lawyer.index') }}"
                         class="nav-link {{ request()->routeIs('lawyer.*') ? 'active' : '' }}"
                         data-key="t-horizontal">Lawyer</a>
-                    </li>
+                    </li> --}}
                         </ul>
                     </div>
                 </li>
 
                     <li class="nav-item">
-                      <a class="nav-link menu-link {{ request()->routeIs('court-cases-count.*')  ? 'active' : 'collapsed' }}" href="#sidebarLayouts123" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
+                      <a class="nav-link menu-link {{ request()->routeIs('property.*')  ? 'active' : 'collapsed' }}" href="#sidebarLayouts123" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts1">
                             <i class="ri-bank-line"></i>
-                            <span data-key="t-layouts">Cases</span>
+                            <span data-key="t-layouts">Property Management</span>
                         </a>
-                        <div class="collapse menu-dropdown {{ request()->routeIs('court-cases-count.*')  ? 'show' : '' }} " id="sidebarLayouts123">
+                        <div class="collapse menu-dropdown {{ request()->routeIs('property.*')  ? 'show' : '' }} " id="sidebarLayouts123">
                             <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('court-cases-count.index') }}" class="nav-link {{ request()->routeIs('court-cases-count.*') ? 'active' : '' }}" data-key="t-horizontal">Court Cases Count</a>
+                                        <a href="{{ route('property.index') }}" class="nav-link {{ request()->routeIs('property.*') ? 'active' : '' }}" data-key="t-horizontal">Property</a>
                                     </li>
                             </ul>
                         </div>

@@ -31,30 +31,37 @@ Route::middleware(['guest', 'PreventBackHistory', 'firewall.all'])->group(functi
     Route::post('register', [App\Http\Controllers\Registeration\AuthController::class, 'register'])->name('signup');
 });
 
+// Public Property Routes
+Route::controller(App\Http\Controllers\Frontend\PropertyController::class)->group(function () {
+    Route::get('/properties', 'index')->name('frontend.properties.index');
+    Route::get('/properties/{id}', 'show')->name('frontend.properties.show');
+});
+
 
 
 
 // Authenticated users
 Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(function () {
 
-    
+
     // Auth Routes
     Route::post('logout', [App\Http\Controllers\Registeration\AuthController::class, 'Logout'])->name('logout');
     Route::get('show-change-password', [App\Http\Controllers\Registeration\AuthController::class, 'showChangePassword'])->name('show-change-password');
     Route::post('change-password', [App\Http\Controllers\Registeration\AuthController::class, 'changePassword'])->name('change-password');
-    Route::get('home', fn () => redirect()->route('dashboard'))->name('home');
+    Route::get('home', fn() => redirect()->route('dashboard'))->name('home');
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-
+    // Properties
+    Route::resource('property', App\Http\Controllers\Admin\PropertyController::class);
     //Masters
-     Route::post('lawyer/{id}/change-status', [LawyerController::class, 'changeStatus'])
-    ->name('lawyer.change-status');
-    Route::resource('court',App\Http\Controllers\Admin\Masters\CourtController::class);
-    Route::resource('lawyer',App\Http\Controllers\Admin\Masters\LawyerController::class);
+    //  Route::post('lawyer/{id}/change-status', [LawyerController::class, 'changeStatus'])
+    // ->name('lawyer.change-status');
+    // Route::resource('court',App\Http\Controllers\Admin\Masters\CourtController::class);
+    // Route::resource('lawyer',App\Http\Controllers\Admin\Masters\LawyerController::class);
 
     //forms
-    Route::resource('court-cases-count',App\Http\Controllers\Admin\CourtCasesCountController::class);
+    // Route::resource('court-cases-count',App\Http\Controllers\Admin\CourtCasesCountController::class);
     // Route::get('/get-lawyers/{court_id}',[App\Http\Controllers\Admin\CourtCasesCountController::class,'getLawyers']);
-    Route::get('court-cases-count/getLawyers/{id}', [App\Http\Controllers\Admin\CourtCasesCountController::class,'getLawyers'])->name('court-cases-count.get-lawyers');
+    // Route::get('court-cases-count/getLawyers/{id}', [App\Http\Controllers\Admin\CourtCasesCountController::class,'getLawyers'])->name('court-cases-count.get-lawyers');
     // Route::post('lawyer/{id}/change-status', [LawyerController::class,'changeStatus'])->name('lawyer.change-status');
 
     // Users Roles n Permissions
