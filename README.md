@@ -10,4 +10,4 @@
 
 <img width="1600" height="854" alt="image" src="https://github.com/user-attachments/assets/cc9b0e69-dfa9-4b6c-867b-c2409048d1bd" />
 
-<img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="blob:https://web.whatsapp.com/79549a3a-66f2-4fea-8bea-225888185f92" width="1005" height="533">
+<img width="1600" height="854" alt="image" src="https://github.com/user-attachments/assets/79549a3a-66f2-4fea-8bea-225888185f92" />
